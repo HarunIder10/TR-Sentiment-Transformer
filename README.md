@@ -1,10 +1,107 @@
-📱 Türkçe Telefon Yorumları Duygu Analizi (Sentiment Analysis)Bu proje, Türkçe telefon yorumlarını analiz ederek "Olumlu" veya "Olumsuz" olarak sınıflandıran, PyTorch tabanlı bir Yapay Zeka uygulamasıdır. Kullanıcı dostu arayüzü PyQt5 ile geliştirilmiştir.🚀 ÖzelliklerTransformer Mimarisi: Kelime sırasını ve bağlamı anlamak için basit bir Transformer Encoder ve Positional Encoding yapısı kullanır.Modern Arayüz (GUI): PyQt5 ile tasarlanmış şık, karanlık mod (dark theme) destekli arayüz.Canlı Analiz: Yazılan yorumu anlık olarak analiz eder ve güven skorunu (confidence score) gösterir.Özel Veri Seti: 200 adet (100 Olumlu, 100 Olumsuz) etiketlenmiş Türkçe telefon yorumu ile eğitilmiştir.Overfitting Önlemi: Veri karıştırma (shuffling) ve optimize edilmiş hiperparametreler ile ezberlemeyi önler.📷 Ekran Görüntüleri(Buraya uygulamanın ekran görüntüsünü ekleyebilirsiniz. Örneğin: screenshots/app_preview.png)🛠️ KurulumProjeyi yerel bilgisayarınızda çalıştırmak için aşağıdaki adımları izleyin.1. Depoyu Klonlayıngit clone [https://github.com/KULLANICI_ADINIZ/telefon-duygu-analizi.git](https://github.com/KULLANICI_ADINIZ/telefon-duygu-analizi.git)
-cd telefon-duygu-analizi
-2. Gerekli Kütüphaneleri YükleyinProjenin çalışması için torch ve PyQt5 kütüphanelerine ihtiyacınız vardır.pip install torch torchvision torchaudio
-pip install PyQt5
-▶️ KullanımKurulum tamamlandıktan sonra uygulamayı başlatmak için terminale şu komutu yazın:python main.py
-Uygulama açıldığında:"Eğitim Başlıyor" mesajını terminalde göreceksiniz (Model sıfırdan eğitilir).Arayüz açıldığında metin kutusuna bir telefon yorumu yazın (Örn: "Batarya çok hızlı bitiyor ama kamera güzel").ANALİZ ET butonuna basın.🧠 Model MimarisiBu projede kullanılan yapay zeka modeli şu katmanlardan oluşur:Embedding Layer: Kelimeleri sayısal vektörlere dönüştürür.Positional Encoding: Transformer'ın kelime sırasını anlamasını sağlar.Transformer Encoder: Multi-head attention mekanizması ile kelimeler arası ilişkiyi kurar.Global Average Pooling: Cümle vektörünü özetler.Fully Connected Layer (Linear): Sonucu 2 sınıfa (Olumlu/Olumsuz) indirger.📂 Dosya Yapısıtelefon-duygu-analizi/
+📱 Türkçe Akıllı Telefon Yorum Analizi
+
+Transformer tabanlı Derin Öğrenme modeli ile anlık duygu analizi yapan masaüstü uygulaması
+
+Bu proje, PyTorch kullanılarak geliştirilmiş özel bir Transformer sınıflandırma modeli ile Türkçe akıllı telefon yorumlarını Olumlu / Olumsuz olarak sınıflandırır.
+Uygulama, PyQt5 tabanlı modern bir masaüstü arayüzü ile kullanıcının yazdığı metnin duygusunu gerçek zamanlı olarak analiz eder.
+
+✨ Özellikler
+
+🧠 Transformer Mimarisi
+Positional Encoding + Multi-Head Attention yapısı ile bağlamı anlayabilen özel bir sınıflandırıcı.
+
+🎨 Modern PyQt5 Arayüzü
+Koyu temalı, sade ve kullanıcı dostu bir masaüstü uygulaması.
+
+⚡ Gerçek Zamanlı Analiz
+Kullanıcı yorumları anında analiz edilir.
+
+📊 Güven Skoru
+Model çıktısı, örneğin: %93 Olumlu şeklinde güven yüzdesi ile birlikte gösterilir.
+
+🔄 Overfitting Önleme
+Optimize edilmiş hiperparametreler ve veri karıştırma teknikleri ile küçük veri setlerinde bile doğru genelleme.
+
+🧠 Model Mimarisi
+
+Model, Transformer.py dosyasında aşağıdaki mimariyi kullanır:
+
+SimpleTransformerClassifier
+
+Embedding Layer: Kelimeleri vektör temsilcilere dönüştürür
+
+Positional Encoding: Cümledeki kelimelerin konum bilgisini modele kazandırır
+
+Transformer Encoder Layer: Çoklu dikkat mekanizması ile bağlam ilişkilerini öğrenir
+
+Global Average Pooling: Cümle temsilini özetler
+
+Linear Layer: Son sınıflandırma (Pozitif / Negatif)
+
+# 📁 Proje Klasör Yapısı
+
+```
+TR-Sentiment-Transformer/
 │
-├── main.py          # Tüm kodları barındıran ana dosya (Model + Eğitim + Arayüz)
-├── README.md        # Proje dokümantasyonu
-🤝 Katkıda BulunmaBu depoyu fork edin.Yeni bir özellik dalı (feature branch) oluşturun (git checkout -b yeni-ozellik).Değişikliklerinizi commit edin (git commit -m 'Yeni özellik eklendi').Dalınızı push edin (git push origin yeni-ozellik).Bir Pull Request oluşturun.
+├── Transformer.py        # Transformer model mimarisi
+├── requirements.txt      # Gerekli paketler
+└── README.md             # Proje dokümanı
+```
+
+---
+
+# 🔧 Kurulum
+
+## 1️⃣ Depoyu Klonla
+```
+git clone https://github.com/YOUR_USERNAME/turkish-phone-sentiment-analysis.git
+cd turkish-phone-sentiment-analysis
+```
+
+# 🚀 Uygulamayı Başlat
+
+```
+python main.py
+```
+
+Terminalde şu mesaj görünürse her şey hazır:
+
+```
+EĞİTİM TAMAMLANDI!
+```
+
+---
+
+# 🖥️ Arayüz Kullanımı
+
+Örnek bir yorum yaz:
+
+```
+Kamera güzel ama şarjı çok çabuk bitiyor.
+```
+
+Sonra **ANALİZ ET** butonuna bas.
+
+Görünen sonuç örneği:
+
+```
+Sonuç: Olumsuz
+Güven Yüzdesi: %87.8
+```
+
+🤝 Katkıda Bulunma
+
+Katkılarınızı memnuniyetle karşılıyoruz!
+
+Repoyu forklayın
+```
+Yeni branş oluşturun → git checkout -b feature/YeniOzellik
+```
+Kodunuzu commit edin
+```
+Push edin → git push origin feature/YeniOzellik
+```
+
+👨‍💻 Geliştirici
+
+HarunIder10
