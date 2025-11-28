@@ -1,2 +1,6 @@
-    torch
-    PyQt5
+torch
+torchvision
+torchaudio
+PyQt5
+numpy
+pandas
